@@ -705,12 +705,14 @@ function renderAnalytics() {
 
 // ---- Utilities ----
 function formatCurrency(n) {
-    return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return '₦' + Math.abs(n).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function formatCompact(n) {
-    if (n >= 1000) return '$' + (n / 1000).toFixed(1) + 'k';
-    return '$' + n.toFixed(0);
+    if (n >= 1000000000) return '₦' + (n / 1000000000).toFixed(1) + 'B';
+    if (n >= 1000000) return '₦' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '₦' + (n / 1000).toFixed(1) + 'K';
+    return '₦' + n.toFixed(0);
 }
 
 function escapeHtml(str) {
